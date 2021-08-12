@@ -116,7 +116,7 @@ public class MarkController {
 		Teacher t = teacherService.getOne(account.getAccountID());
 		model.addAttribute("teacher", t);
 		model.addAttribute("classes", classService.findClassTeaching(t.getTeacherID()));
-		model.addAttribute("schedules", timetableService.viewSchedule(t.getTeacherID()));
+//		model.addAttribute("schedules", timetableService.viewSchedule(t.getTeacherID()));
 		model.addAttribute("classID", classID);
 		model.addAttribute("marks", markService.viewMarkBySubject(classID, t.getSubjectID()));
 		return "NhapDiem";
@@ -130,7 +130,7 @@ public class MarkController {
 		Teacher t = teacherService.getOne(account.getAccountID());
 		model.addAttribute("teacher", t);
 		model.addAttribute("classes", classService.findClassTeaching(t.getTeacherID()));
-		model.addAttribute("schedules", timetableService.viewSchedule(t.getTeacherID()));
+//		model.addAttribute("schedules", timetableService.viewSchedule(t.getTeacherID()));
 		model.addAttribute("classID", classStudying);
 		model.addAttribute("marks", markService.viewMarkBySubject(classStudying, t.getSubjectID()));
 		model.addAttribute("editMark", new ViewMarkBySubject());
@@ -151,7 +151,7 @@ public class MarkController {
 		Teacher t = teacherService.getOne(account.getAccountID());
 		model.addAttribute("teacher", t);
 		model.addAttribute("classes", classService.findClassTeaching(t.getTeacherID()));
-		model.addAttribute("schedules", timetableService.viewSchedule(t.getTeacherID()));
+//		model.addAttribute("schedules", timetableService.viewSchedule(t.getTeacherID()));
 		model.addAttribute("classID", classID);
 		model.addAttribute("marks", markService.viewMarkBySubject(classID, t.getSubjectID()));
 		

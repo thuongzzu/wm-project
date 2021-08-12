@@ -54,17 +54,18 @@ class Timetable_ID implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	long classID, dayID, periodID;
+	long classID, dayID, periodID, weekID;
 	
 	public Timetable_ID() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Timetable_ID(long classID, long dayID, long periodID) {
+	public Timetable_ID(long classID, long dayID, long periodID, long weekID) {
 		super();
 		this.classID = classID;
 		this.dayID = dayID;
 		this.periodID = periodID;
+		this.weekID = weekID;
 	}
 
 	public long getClassID() {
@@ -89,6 +90,14 @@ class Timetable_ID implements Serializable {
 
 	public void setPeriodID(long periodID) {
 		this.periodID = periodID;
+	}
+
+	public long getWeekID() {
+		return weekID;
+	}
+
+	public void setWeekID(long weekID) {
+		this.weekID = weekID;
 	}
 
 	public static long getSerialversionuid() {

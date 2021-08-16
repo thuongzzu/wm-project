@@ -11,6 +11,8 @@ public class ViewTimetable {
 	private String subjectName;
 
 	private Long classID;
+	
+	private Long weekID;
 
 	public ViewTimetable() {
 		// TODO Auto-generated constructor stub
@@ -65,9 +67,17 @@ public class ViewTimetable {
 		this.classID = classID;
 	}
 
+	public Long getWeekID() {
+		return weekID;
+	}
+
+	public void setWeekID(Long weekID) {
+		this.weekID = weekID;
+	}
+
 	@Override
 	public String toString() {
-		return "ViewTimetable [periodID=" + periodID + ", dayID=" + dayID + ", name=" + name + ", subjectName="
+		return "ViewTimetable [periodID=" + periodID + ", dayID=" + dayID + ", weekID=" + weekID + ", name=" + name + ", subjectName="
 				+ subjectName + ", classID=" + classID + "]";
 	}
 

@@ -4,13 +4,18 @@ package com.mock.project.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.mock.project.service.EmailService;
 import com.mock.project.service.TeacherService;
 
 @Controller
 public class MainController {
 	@Autowired
 	private TeacherService teacherService;
+	
+	@Autowired
+	private EmailService emailService;
 	
 	@GetMapping("/")
 	public String index() {		
@@ -41,4 +46,5 @@ public class MainController {
 	public String chem() {
 		return "chem";
 	}
+	
 }

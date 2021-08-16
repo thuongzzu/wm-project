@@ -70,8 +70,8 @@ public class MarkServiceImpl implements MarkService{
 
 	@Override
 	public void edit_mark(int studentID, int subjectID, int classID, double hs1k1, double hs2k1, double hs3k1,
-			double hs1k2, double hs2k2, double hs3k2, double avg) {
-		markRepository.edit_mark(studentID, subjectID, classID, hs1k1, hs2k1, hs3k1, hs1k2, hs2k2, hs3k2, avg);
+			double hs1k2, double hs2k2, double hs3k2) {
+		markRepository.edit_mark(studentID, subjectID, classID, hs1k1, hs2k1, hs3k1, hs1k2, hs2k2, hs3k2);
 	}
 
 	@Override

@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             	.antMatchers("/*.js").permitAll()
             	.antMatchers("/*.css").permitAll()
             	.antMatchers("/api/**").authenticated()
-            	.antMatchers("/main-page").hasAnyRole("ADMIN","TEACHER","STUDENT")
+            	.antMatchers("/").hasAnyRole("ADMIN","TEACHER","STUDENT")
                 .antMatchers("/teacherls","/teacherls/{id}/delete","/teacher/register","/teacherls/{id}/edit","/teacher/search","/addclass","/addstudent","/viewstudent","/studentls/{id}/edit","/addtimetable").hasRole("ADMIN")
                 .antMatchers("/teacher/editpersonal","/managemarks").hasRole("TEACHER")
                 .antMatchers("viewmark","/student/editpersonal").hasRole("STUDENT")

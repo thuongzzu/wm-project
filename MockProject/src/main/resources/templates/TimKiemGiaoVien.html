@@ -43,7 +43,7 @@
      <nav class="navbar header-nav navbar-expand-lg">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="/"><img
-					src="/images/logo.png" alt="image" /></a>
+					src="/images/logo2.png" alt="image" /></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbar-wd" aria-controls="navbar-wd"
 					aria-expanded="false" aria-label="Toggle navigation">
@@ -150,7 +150,7 @@
 	<!-- section -->
 
 	<section class="inner_banner">
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row">
 				<div class="col-12">
 					<div class="full">
@@ -165,7 +165,7 @@
 
 	<!-- section -->
 	<div class="section margin-top_50">
-		<div class="container-fluid">
+		<div class="container">
 			<div class="row">
 				<div class="col-12 layout_padding_2">
 					<div class="full">
@@ -177,16 +177,16 @@
 							</div>
 						
 						</form>
-						<div class="container-fluid d-flex justify-content-center vh-100">
+						<div class="container d-flex justify-content-center vh-100">
 							<table class="table mt-5">
-								<thead class="thead-dark">
+								<thead class="none">
 									<tr>
-										<th>Ảnh</th>
-										<th>Tên</th>
-										<th>Ngày Sinh</th>
-										<th>Giới tính</th>
-										<th>Số điện thoại</th>
-										<th>Môn dạy</th>
+										<th scope="col">Ảnh</th>
+										<th scope="col">Tên</th>
+										<th scope="col">Ngày Sinh</th>
+										<th scope="col">Giới tính</th>
+										<th scope="col">Số điện thoại</th>
+										<th scope="col">Môn dạy</th>
 										<th></th>
 									</tr>
 								</thead>
@@ -194,11 +194,11 @@
 									<tr th:each="teacher,iterStat : ${teachers}">
 										<td><img style="width: 120px; height: 150px;"
 											th:attr="src=@{${teacher.photo}}"></td>
-										<td th:text="${teacher.name}"></td>
-										<td th:text="${teacher.birthday}"></td>
-										<td th:text="${teacher.gender}"></td>
-										<td th:text="${teacher.phone}"></td>
-										<td th:text="${teacher.subject.subjectName}"></td>
+										<td class = "align-middle"th:text="${teacher.name}"></td>
+										<td class = "align-middle"th:text="${teacher.birthday}"></td>
+										<td class = "align-middle"th:text="${teacher.gender}"></td>
+										<td class = "align-middle"th:text="${teacher.phone}"></td>
+										<td class = "align-middle"th:text="${teacher.subject.subjectName}"></td>
 									</tr>
 								</tbody>
 							</table>
@@ -265,7 +265,7 @@
 								<span>69 Le Duan, Da Nang<br />Viet Nam
 							</span></li>
 							<li><i
-								class="fas fa-envelope mr-3 d-flex align-items-center mt-1"></i><span>perfectlearn@edu.com.vn</span>
+								class="fas fa-envelope mr-3 d-flex align-items-center mt-1"></i><span>WMSchool@edu.com.vn</span>
 							</li>
 							<li><i
 								class="fas fa-phone mr-3 d-flex align-items-center mt-1"></i><span>+84586954775</span>

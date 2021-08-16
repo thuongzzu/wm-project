@@ -4,6 +4,7 @@ public class ViewSchedule {
 	
 	private int periodID;
 	private int dayID;
+	private int weekID;
 	private String className;
 	private int teacherID;
 	private int startYear;
@@ -60,10 +61,19 @@ public class ViewSchedule {
 	public void setStartYear(int startYear) {
 		this.startYear = startYear;
 	}
+	
+
+	public int getWeekID() {
+		return weekID;
+	}
+
+	public void setWeekID(int weekID) {
+		this.weekID = weekID;
+	}
 
 	@Override
 	public String toString() {
-		return "ViewSchedule [periodID=" + periodID + ", dayID=" + dayID + ", className=" + className + ", teacherID="
+		return "ViewSchedule [periodID=" + periodID + ", dayID=" + dayID + ", weekID=" + weekID + ", className=" + className + ", teacherID="
 				+ teacherID + ", startYear=" + startYear + "]";
 	}
 

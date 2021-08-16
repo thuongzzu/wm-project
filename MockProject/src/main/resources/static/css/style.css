@@ -408,7 +408,8 @@ a.navbar-brand {
 }
 
 a.navbar-brand img {
-  height: 55px;
+  height: 90px;
+  width: 200px
 }
 
 .top-header .navbar .navbar-collapse ul li a.active {
@@ -440,6 +441,7 @@ a.navbar-brand img {
   background: #fff;
   z-index: 20;
   margin: 0;
+  padding: 0 5%;
 }
 
 .navbar-toggler {
@@ -489,7 +491,7 @@ a.navbar-brand img {
   width: 950px;
 }
 .full > img {
-  width: 90%;
+  width: 100%;
   margin-top:60px;
 }
 .blog_img_popular {
@@ -2297,3 +2299,6 @@ section.inner_banner h1 {
    -webkit-animation: slide 14s ease infinite;
  }
  
+.text-style {
+ 	text-align: center;
+ }

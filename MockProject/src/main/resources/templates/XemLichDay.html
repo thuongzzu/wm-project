@@ -29,8 +29,8 @@
 	<header class="top-header" th:fragment="header">
 		<nav class="navbar header-nav navbar-expand-lg">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="/"><img src="/images/logo.png"
-					alt="image" /></a>
+				<a class="navbar-brand" href="/"><img
+					src="/images/logo2.png" alt="image" /></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbar-wd" aria-controls="navbar-wd"
 					aria-expanded="false" aria-label="Toggle navigation">
@@ -48,10 +48,9 @@
 								<a class="dropdown-item" href="/findteacher">Tìm kiếm giáo
 									viên</a>
 								<div sec:authorize="hasRole('TEACHER')">
-									<a class="dropdown-item" href="#">Lớp chủ
-										nhiệm</a> <a class="dropdown-item" href="/managemarks">Nhập
-										điểm</a> <a class="dropdown-item" href="/viewschedule">Xem
-										lịch dạy</a>
+									<a class="dropdown-item" href="#">Lớp chủ nhiệm</a> <a
+										class="dropdown-item" href="/managemarks">Nhập điểm</a> <a
+										class="dropdown-item" href="/viewschedule">Xem lịch dạy</a>
 								</div>
 								<div sec:authorize="hasRole('ADMIN')">
 									<a class="dropdown-item" href="/teacher/register">Thêm giáo
@@ -153,40 +152,62 @@
 			</div>
 		</div>
 	</section>
-	<div class="section margin-top_50">
-		<h1>Xem lịch dạy</h1>
-		<div th:each="t : ${teacher}">
-			<h3 th:text="${'Tên giáo viên: ' + t.name}"></h3>
-			<h3 th:text="${'Môn giảng dạy: ' + t.subject.subjectName}"></h3>
-		</div>
-		<table class="table mt-5">
-			<thead class="thead-dark">
-				<tr>
-					<th scope="col">Tiết</th>
-					<th scope="col">Thứ 2</th>
-					<th scope="col">Thứ 3</th>
-					<th scope="col">Thứ 4</th>
-					<th scope="col">Thứ 5</th>
-					<th scope="col">Thứ 6</th>
-					<th scope="col">Thứ 7</th>
-				</tr>
-			</thead>
-			<tbody>
-			<tbody th:if="${schedules != null}">
-				<tr th:each="i : ${#numbers.sequence(1, 10, 1)}">
-					<th scope="row"><p th:text="${i}"></p></th>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="full">
+					<div class="section margin-top_50">
+						<h1>Xem lịch dạy</h1>
+						<form name="searchWeek" action="searchWeek"
+							th:action="@{/searchWeek}">
+							<div th:each="t : ${teacher}">
+								<h3 th:text="${'Tên giáo viên: ' + t.name}"></h3>
+								<h3 th:text="${'Môn giảng dạy: ' + t.subject.subjectName}"></h3>
+								<h3 th:if="${weekID}" th:text="${'Tuần: ' + weekID}"></h3>
+								<select name="weekID" id="selector1">
+									<option selected>Chọn tuần</option>
+									<option th:each="week : ${weeks}" th:value="${week.weekID}"
+										th:text="${'Tuần ' + week.weekID}"></option>
+								</select>
+								<button type="submit" class="btn btn-success thirdBgColor">Tìm</button>
+								<script th:if="${weekID}">
+									document.getElementById("selector1").value = '[(*{weekID})]';
+								</script>
+							</div>
+							<table class="table table-bordered mt-5 text-style">
+								<thead class="none">
+									<tr>
+										<th scope="col">Tiết</th>
+										<th scope="col">Thứ 2</th>
+										<th scope="col">Thứ 3</th>
+										<th scope="col">Thứ 4</th>
+										<th scope="col">Thứ 5</th>
+										<th scope="col">Thứ 6</th>
+										<th scope="col">Thứ 7</th>
+									</tr>
+								</thead>
+								<tbody>
+								<tbody th:if="${schedules != null}">
+									<tr th:each="i : ${#numbers.sequence(1, 10, 1)}">
+										<th scope="row"><p th:text="${i}"></p></th>
 
-					<th:block th:each="j : ${#numbers.sequence(2, 7, 1)}">
-						<td>
-							<p
-								th:text="${schedules.get(((i-1)*6 + (j-1) - 1)).getClassName()}"></p>
-						</td>
-					</th:block>
-				</tr>
-			</tbody>
-			</tbody>
-		</table>
+										<th:block th:each="j : ${#numbers.sequence(2, 7, 1)}">
+											<td>
+												<p
+													th:text="${schedules.get(((i-1)*6 + (j-1) - 1)).getClassName()}"></p>
+											</td>
+										</th:block>
+									</tr>
+								</tbody>
+								</tbody>
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
 	<!-- Start Footer -->
 	<footer class="footer-box " th:fragment="footer">
 		<div class="container">
@@ -242,7 +263,7 @@
 								8 <span>69 Le Duan, Da Nang<br />Viet Nam
 							</span></li>
 							<li><i
-								class="fas fa-envelope mr-3 d-flex align-items-center mt-1"></i><span>perfectlearn@edu.com.vn</span>
+								class="fas fa-envelope mr-3 d-flex align-items-center mt-1"></i><span>WMSchool@edu.com.vn</span>
 							</li>
 							<li><i
 								class="fas fa-phone mr-3 d-flex align-items-center mt-1"></i><span>+84586954775</span>

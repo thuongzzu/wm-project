@@ -29,8 +29,8 @@
 	<header class="top-header" th:fragment="header">
 		<nav class="navbar header-nav navbar-expand-lg">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="/"><img src="/images/logo.png"
-					alt="image" /></a>
+				<a class="navbar-brand" href="/"><img
+					src="/images/logo2.png" alt="image" /></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbar-wd" aria-controls="navbar-wd"
 					aria-expanded="false" aria-label="Toggle navigation">
@@ -48,10 +48,9 @@
 								<a class="dropdown-item" href="/findteacher">Tìm kiếm giáo
 									viên</a>
 								<div sec:authorize="hasRole('TEACHER')">
-									<a class="dropdown-item" href="#">Lớp chủ
-										nhiệm</a> <a class="dropdown-item" href="/managemarks">Nhập
-										điểm</a> <a class="dropdown-item" href="/viewschedule">Xem
-										lịch dạy</a>
+									<a class="dropdown-item" href="#">Lớp chủ nhiệm</a> <a
+										class="dropdown-item" href="/managemarks">Nhập điểm</a> <a
+										class="dropdown-item" href="/viewschedule">Xem lịch dạy</a>
 								</div>
 								<div sec:authorize="hasRole('ADMIN')">
 									<a class="dropdown-item" href="/teacher/register">Thêm giáo
@@ -155,98 +154,112 @@
 	<!-- Start header -->
 	<div class="section margin-top_50">
 		<div class="container">
-		<div class="row">
+			<div class="row">
 				<div class="col-md-12 layout_padding_2">
 					<div class="full">
-					
-		<form name="searchFirst" action="searchFirst"
-			th:action="@{/searchFirst}" id="searchFirst">
-			<p>Chọn lớp</p>
-					<select name="classID" id="selector">
-						<option selected>Chọn lớp</option>
-						<option th:each="class : ${classes}" th:value="${class.classID}"
-							th:text="${class.className + ' (' + class.startYear + '-' + (class.startYear + 1) + ')'}"></option>
-					</select>
-					<script th:if="${classID}">
-						document.getElementById("selector").value = '[(*{classID})]';
-					</script>
-			<button type="submit" id="show" class="btn btn-success thirdBgColor">Tìm</button>
-			<div th:if="${fail}" th:utext="${fail}"
-                    style="color: red; font-style: italic;">
-                    </div>
-                  <div th:if="${success}" th:utext="${success}"
-                    style="color: green; font-style: italic;">
-                    </div>
-		</form>
-					
-		<form name="newTimetable" id="newTimetable" action="newTimetable"
-			th:action="@{/newTimetable}" method="post">
-					
-			<input type="text" id="classID" name="classID" placeholder=""
-				th:value="${classID}" /> 
-			<div id="filter" th:if="${foundClass}">
-				<select name="teacherID" id="teacherID">
-					<option value="" selected>-Chọn môn học và giáo viên-</option>
-					<option th:each="teacher : ${teachers}"
-						th:value="${teacher.teacherID}"
-						th:text="${teacher.subject.subjectName + ' - ' + teacher.name}"></option>
-				</select> <br><select name="dayID" id="dayID">
-					<option value="" selected>-Chọn ngày trong tuần-</option>
-					<option th:each="day : ${days}" th:value="${day.dayID}"
-						th:text="${'Thứ ' + day.dayID}"></option>
-				</select> <br><select name="periodID" id="periodID">
-					<option value="" selected>-Chọn tiết học-</option>
-					<option th:each="period : ${periods}" th:value="${period.periodID}"
-						th:text="${'Tiết ' + period.periodID}"></option>
-				</select>
-				<br>
-				<button type="submit" class="btn btn-success thirdBgColor">Thêm vào thời khóa biểu</button>
+
+						<form name="searchFirst" action="searchFirst"
+							th:action="@{/searchFirst}" id="searchFirst">
+							<p>Chọn lớp</p>
+							<select name="classID" id="selector">
+								<option selected>Chọn lớp</option>
+								<option th:each="class : ${classes}" th:value="${class.classID}"
+									th:text="${class.className + ' (' + class.startYear + '-' + (class.startYear + 1) + ')'}"></option>
+							</select>
+							<select name="weekID" id="selector1">
+								<option selected>Chọn tuần</option>
+								<option th:each="week : ${weeks}" th:value="${week.weekID}"
+									th:text="${'Tuần ' + week.weekID}"></option>
+							</select>
+							<script th:if="${classID}">
+								document.getElementById("selector").value = '[(*{classID})]';
+							</script>
+							<script th:if="${weekID}">
+								document.getElementById("selector1").value = '[(*{weekID})]';
+							</script>
+							<button type="submit" id="show"
+								class="btn btn-success thirdBgColor">Tìm</button>
+							<div th:if="${fail}" th:utext="${fail}"
+								style="color: red; font-style: italic;"></div>
+							<div th:if="${success}" th:utext="${success}"
+								style="color: green; font-style: italic;"></div>
+						</form>
+
+						<form name="newTimetable" id="newTimetable" action="newTimetable"
+							th:action="@{/newTimetable}" method="post">
+
+							<input type="text" id="classID" name="classID" placeholder=""
+								th:value="${classID}" />
+							<input id="weekID" name="weekID" placeholder=""
+								th:value="${weekID}" style = "display:none" />
+							<div id="filter" th:if="${foundClass}">
+								<select name="teacherID" id="teacherID">
+									<option value="" selected>-Chọn môn học và giáo viên-</option>
+									<option th:each="teacher : ${teachers}"
+										th:value="${teacher.teacherID}"
+										th:text="${teacher.subject.subjectName + ' - ' + teacher.name}"></option>
+								</select> <br>
+								<select name="dayID" id="dayID">
+									<option value="" selected>-Chọn ngày trong tuần-</option>
+									<option th:each="day : ${days}" th:value="${day.dayID}"
+										th:text="${'Thứ ' + day.dayID}"></option>
+								</select> <br>
+								<select name="periodID" id="periodID">
+									<option value="" selected>-Chọn tiết học-</option>
+									<option th:each="period : ${periods}"
+										th:value="${period.periodID}"
+										th:text="${'Tiết ' + period.periodID}"></option>
+								</select> <br>
+								
+								<button type="submit" class="btn btn-success thirdBgColor">Thêm
+									vào thời khóa biểu</button>
+							</div>
+						</form>
+
+						<div th:each="found : ${foundClass}">
+							<h1
+								th:text="${'Lớp ' + found.className + ' (' + found.startYear + '-' + (found.startYear + 1) + ')'}"></h1>
+						</div>
+						<form name="searchClass" action="searchClass"
+							th:action="@{/searchClass}">
+							<table class="table table-bordered mt-5">
+								<thead class="none">
+
+									<tr>
+										<th scope="col">Tiết</th>
+										<th scope="col">Thứ 2</th>
+										<th scope="col">Thứ 3</th>
+										<th scope="col">Thứ 4</th>
+										<th scope="col">Thứ 5</th>
+										<th scope="col">Thứ 6</th>
+										<th scope="col">Thứ 7</th>
+									</tr>
+								</thead>
+								<tbody>
+								<tbody th:if="${timetables != null}">
+									<tr th:each="i : ${#numbers.sequence(1, 10, 1)}">
+										<th scope="row"><p th:text="${i}"></p></th>
+
+										<th:block th:each="j : ${#numbers.sequence(2, 7, 1)}">
+											<td>
+												<p
+													th:text="${timetables.get(((i-1)*6 + (j-1) - 1)).getSubjectName()}"></p>
+												<p
+													th:text="${timetables.get(((i-1)*6 + (j-1) - 1)).getName()}"></p>
+												<a role="button"
+												th:if="${timetables.get(((i-1)*6 + (j-1) - 1)).getSubjectName()}"
+												th:href="@{/timetable/{classID}/{weekID}/{periodID}/{dayID}/delete(classID=${classID},weekID=${weekID}, periodID=${i}, dayID=${j})}">Xóa</a>
+											</td>
+										</th:block>
+									</tr>
+								</tbody>
+								</tbody>
+							</table>
+						</form>
+					</div>
+				</div>
 			</div>
-		</form>
-		
-		<div th:each="found : ${foundClass}">
-			<h1
-				th:text="${'Lớp ' + found.className + ' (' + found.startYear + '-' + (found.startYear + 1) + ')'}"></h1>
 		</div>
-		<form name="searchClass" action="searchClass"
-			th:action="@{/searchClass}">
-			<table class="table table-bordered mt-5">
-				<thead class="thead-dark">
-
-					<tr>
-						<th scope="col">Tiết</th>
-						<th scope="col">Thứ 2</th>
-						<th scope="col">Thứ 3</th>
-						<th scope="col">Thứ 4</th>
-						<th scope="col">Thứ 5</th>
-						<th scope="col">Thứ 6</th>
-						<th scope="col">Thứ 7</th>
-					</tr>
-				</thead>
-				<tbody>
-				<tbody th:if="${timetables != null}">
-					<tr th:each="i : ${#numbers.sequence(1, 10, 1)}">
-						<th scope="row"><p th:text="${i}"></p></th>
-
-						<th:block th:each="j : ${#numbers.sequence(2, 7, 1)}">
-							<td>
-								<p
-									th:text="${timetables.get(((i-1)*6 + (j-1) - 1)).getSubjectName()}"></p>
-								<p th:text="${timetables.get(((i-1)*6 + (j-1) - 1)).getName()}"></p>
-								<a role="button"
-								th:if="${timetables.get(((i-1)*6 + (j-1) - 1)).getSubjectName()}"
-								th:href="@{/timetable/{classID}/{periodID}/{dayID}/delete(classID=${classID}, periodID=${i}, dayID=${j})}">Xóa</a>
-							</td>
-						</th:block>
-					</tr>
-				</tbody>
-				</tbody>
-			</table>
-		</form>
-		</div>
-		</div>
-	</div>
-	</div>
 	</div>
 	<!-- Start Footer -->
 	<footer class="footer-box " th:fragment="footer">
@@ -303,7 +316,7 @@
 								8 <span>69 Le Duan, Da Nang<br />Viet Nam
 							</span></li>
 							<li><i
-								class="fas fa-envelope mr-3 d-flex align-items-center mt-1"></i><span>perfectlearn@edu.com.vn</span>
+								class="fas fa-envelope mr-3 d-flex align-items-center mt-1"></i><span>WMSchool@edu.com.vn</span>
 							</li>
 							<li><i
 								class="fas fa-phone mr-3 d-flex align-items-center mt-1"></i><span>+84586954775</span>
@@ -334,53 +347,53 @@
 	<script src="/js/custom.js"></script>
 	<script src="/js/jquery.validate.min.js"></script>
 	<script>
-	$.validator.addMethod("regex", function (value, element, regexp) {
-		var re = new RegExp(regexp);
-		return this.optional(element) || re.test(value);
-	  });
+		$.validator.addMethod("regex", function(value, element, regexp) {
+			var re = new RegExp(regexp);
+			return this.optional(element) || re.test(value);
+		});
 
-	$(document).ready(function() {
-		$('#searchFirst').validate({
-			rules: {
-				classID: {
-					required: true,
+		$(document).ready(function() {
+			$('#searchFirst').validate({
+				rules : {
+					classID : {
+						required : true,
+					}
+				},
+				messages : {
+					classID : {
+						required : "Vui lòng chọn lớp!",
+					}
 				}
-			},
-			messages: {
-				classID: {
-					required: "Vui lòng chọn lớp!",
-				}
-			}
+			})
 		})
-	})
-	
-	$(document).ready(function() {
-		$('#newTimetable').validate({
-			rules: {
-				teacherID: {
-					required: true,
+
+		$(document).ready(function() {
+			$('#newTimetable').validate({
+				rules : {
+					teacherID : {
+						required : true,
+					},
+					dayID : {
+						required : true,
+					},
+					periodID : {
+						required : true,
+					}
+
 				},
-				dayID: {
-					required: true,
-				},
-				periodID: {
-					required: true,
+				messages : {
+					teacherID : {
+						required : "Vui lòng chọn giáo viên!",
+					},
+					dayID : {
+						required : "Vui lòng chọn thứ!",
+					},
+					periodID : {
+						required : "Vui lòng chọn tiết"
+					}
 				}
-				
-			},
-			messages: {
-				teacherID: {
-					required: "Vui lòng chọn giáo viên!",
-				},
-				dayID: {
-					required: "Vui lòng chọn thứ!",
-				},
-				periodID: {
-					required: "Vui lòng chọn tiết"
-				}
-			}
+			})
 		})
-	})
 		document.getElementById("classID").style.display = "none";
 	</script>
 </body>

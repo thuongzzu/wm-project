@@ -43,8 +43,8 @@
 	<header class="top-header" th:fragment="header">
 		<nav class="navbar header-nav navbar-expand-lg">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="/"><img src="/images/logo.png"
-					alt="image" /></a>
+				<a class="navbar-brand" href="/"><img
+					src="/images/logo2.png" alt="image" /></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbar-wd" aria-controls="navbar-wd"
 					aria-expanded="false" aria-label="Toggle navigation">
@@ -62,10 +62,9 @@
 								<a class="dropdown-item" href="/findteacher">Tìm kiếm giáo
 									viên</a>
 								<div sec:authorize="hasRole('TEACHER')">
-									<a class="dropdown-item" href="#">Lớp chủ
-										nhiệm</a> <a class="dropdown-item" href="/managemarks">Nhập
-										điểm</a> <a class="dropdown-item" href="/viewschedule">Xem
-										lịch dạy</a>
+									<a class="dropdown-item" href="#">Lớp chủ nhiệm</a> <a
+										class="dropdown-item" href="/managemarks">Nhập điểm</a> <a
+										class="dropdown-item" href="/viewschedule">Xem lịch dạy</a>
 								</div>
 								<div sec:authorize="hasRole('ADMIN')">
 									<a class="dropdown-item" href="/teacher/register">Thêm giáo
@@ -183,17 +182,25 @@
 						<form name="searchClass" action="searchClass"
 							th:action="@{/searchClass}">
 							<p>Chọn lớp</p>
-					<select name="classID" id="selector">
-						<option selected>Chọn lớp</option>
-						<option th:each="class : ${classes}" th:value="${class.classID}"
-							th:text="${class.className + ' (' + class.startYear + '-' + (class.startYear + 1) + ')'}"></option>
-					</select>
-					<script th:if="${classID}">
-						document.getElementById("selector").value = '[(*{classID})]';
-					</script>
+							<select name="classID" id="selector">
+								<option selected>Chọn lớp</option>
+								<option th:each="class : ${classes}" th:value="${class.classID}"
+									th:text="${class.className + ' (' + class.startYear + '-' + (class.startYear + 1) + ')'}"></option>
+							</select> 
+							<select name="weekID" id="selector1">
+								<option selected>Chọn tuần</option>
+								<option th:each="week : ${weeks}" th:value="${week.weekID}"
+									th:text="${'Tuần ' + week.weekID}"></option>
+							</select>
+							<script th:if="${classID}">
+								document.getElementById("selector").value = '[(*{classID})]';
+							</script>
+							<script th:if="${weekID}">
+								document.getElementById("selector1").value = '[(*{weekID})]';
+							</script>
 							<button type="submit" class="btn btn-success thirdBgColor">Tìm</button>
-							<table class="table table-striped mt-5">
-								<thead class="thead-dark">
+							<table class="table table-bordered mt-5 text-style">
+								<thead class="none">
 									<tr>
 										<th scope="col">Tiết</th>
 										<th scope="col">Thứ 2</th>
@@ -247,10 +254,11 @@
 							<img src="/images/footer_logo.png" alt="#" />
 						</div>
 						<div class="full white_fonts">
-							<p>
-							The mission of PerfectLearn is to nurture students to develop their talents and skills to be responsible, 
-							success-oriented citizens who contribute to the ongoing improvement of their local, national and international communities. 
-							</p>
+							<p>The mission of PerfectLearn is to nurture students to
+								develop their talents and skills to be responsible,
+								success-oriented citizens who contribute to the ongoing
+								improvement of their local, national and international
+								communities.</p>
 						</div>
 					</div>
 				</div>
@@ -271,7 +279,8 @@
 				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 					<div class="footer_blog full white_fonts">
 						<h3>Newsletter</h3>
-						<p>Hãy đăng kí để có thể nhận được những tin tức, ưu đãi và thông báo mới nhất từ chúng tôi</p>
+						<p>Hãy đăng kí để có thể nhận được những tin tức, ưu đãi và
+							thông báo mới nhất từ chúng tôi</p>
 						<div class="newsletter_form">
 							<form action="index.html">
 								<input type="email" placeholder="Your Email" name="#" required />
@@ -287,9 +296,10 @@
 						<ul class="full">
 							<li><i
 								class="fas fa-map-marker-alt mr-3 d-flex align-items-center mt-1"></i>
-								<span>69 Le Duan, Da Nang<br/>Viet Nam</span></li>
+								<span>69 Le Duan, Da Nang<br />Viet Nam
+							</span></li>
 							<li><i
-								class="fas fa-envelope mr-3 d-flex align-items-center mt-1"></i><span>perfectlearn@edu.com.vn</span>
+								class="fas fa-envelope mr-3 d-flex align-items-center mt-1"></i><span>WMSchool@edu.com.vn</span>
 							</li>
 							<li><i
 								class="fas fa-phone mr-3 d-flex align-items-center mt-1"></i><span>+84586954775</span>

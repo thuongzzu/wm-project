@@ -34,7 +34,7 @@ public interface MarkRepository extends JpaRepository<Mark, Integer>{
 	
 	@Transactional
 	@Modifying
-	@Query(value = "exec edit_mark :param1, :param2, :param3, :param4, :param5, :param6, :param7, :param8, :param9, :param10", nativeQuery = true)
+	@Query(value = "exec edit_mark :param1, :param2, :param3, :param4, :param5, :param6, :param7, :param8, :param9", nativeQuery = true)
 	void edit_mark(
 			@Param("param1") int param1, 
 			@Param("param2") int param2,
@@ -44,7 +44,6 @@ public interface MarkRepository extends JpaRepository<Mark, Integer>{
 			@Param("param6") double param6,
 			@Param("param7") double param7,
 			@Param("param8") double param8,
-			@Param("param9") double param9,
-			@Param("param10") double param10
+			@Param("param9") double param9
 			);
 }

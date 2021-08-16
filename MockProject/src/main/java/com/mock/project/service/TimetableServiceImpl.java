@@ -18,8 +18,8 @@ public class TimetableServiceImpl implements TimetableService{
 	private TimetableRepository timetableRepository;
 	
 	@Override
-	public Iterable<ViewTimetable> viewTimetable(Integer classID) {
-		Iterable<Object[]> datas=  timetableRepository.viewTimetable(classID);
+	public Iterable<ViewTimetable> viewTimetable(Integer classID, Integer weekID) {
+		Iterable<Object[]> datas=  timetableRepository.viewTimetable(classID,weekID);
 		ArrayList<ViewTimetable> result = new ArrayList<ViewTimetable>();
 		datas.forEach(item -> {
 			ViewTimetable obj = new ViewTimetable();
@@ -28,14 +28,15 @@ public class TimetableServiceImpl implements TimetableService{
 			obj.setName((String)item[2]);
 			obj.setSubjectName((String)item[3]);
 			obj.setClassID(item[4]==null ? null : ((Integer)item[4]).longValue());
+			obj.setWeekID(item[5]==null ? null : ((Integer)item[5]).longValue());
 			result.add(obj);
 		});
 		return result;
 	}
 	
 	@Override
-	public Iterable<ViewSchedule> viewSchedule(long teacherID) {
-		Iterable<Object[]> datas=  timetableRepository.viewSchedule(teacherID);
+	public Iterable<ViewSchedule> viewSchedule(long teacherID, long weekID) {
+		Iterable<Object[]> datas=  timetableRepository.viewSchedule(teacherID, weekID);
 		ArrayList<ViewSchedule> result = new ArrayList<ViewSchedule>();
 		datas.forEach(item -> {
 			ViewSchedule obj = new ViewSchedule();
@@ -44,6 +45,7 @@ public class TimetableServiceImpl implements TimetableService{
 			obj.setClassName((String)item[2]);
 			obj.setTeacherID(item[3]==null ? null : ((Integer)item[3]));
 			obj.setStartYear(item[4]==null ? null : ((Integer)item[4]));
+			obj.setWeekID(item[5]==null ? null : ((Integer)item[5]));
 			result.add(obj);
 		});
 		return result;
@@ -55,13 +57,13 @@ public class TimetableServiceImpl implements TimetableService{
 	}
 
 	@Override
-	public void addTimetable(int classID, int dayID, int periodID, int teacherID) {
-		timetableRepository.addTimetable(classID, dayID, periodID, teacherID);
+	public void addTimetable(int classID, int dayID, int periodID, int teacherID, int weekID) {
+		timetableRepository.addTimetable(classID, dayID, periodID, teacherID, weekID);
 	}
 
 	@Override
-	public void deleteTimetable(int classID, int periodID, int dayID) {
-		timetableRepository.deleteTimetable(classID, periodID, dayID);
+	public void deleteTimetable(int classID, int periodID, int dayID, int weekID) {
+		timetableRepository.deleteTimetable(classID, periodID, dayID, weekID);
 		
 	}
 
@@ -76,8 +78,8 @@ public class TimetableServiceImpl implements TimetableService{
 	}
 
 	@Override
-	public List<Integer> checkTimetable(int dayID, int periodID, int start_year, int teacherID) {
-		return timetableRepository.checkTimetable(dayID, periodID, start_year, teacherID);
+	public List<Integer> checkTimetable(int dayID, int periodID, int start_year, int teacherID, int weekID) {
+		return timetableRepository.checkTimetable(dayID, periodID, start_year, teacherID, weekID);
 	}
 
 }

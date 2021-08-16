@@ -7,19 +7,19 @@ import com.mock.project.dto.ViewTimetable;
 import com.mock.project.entity.Timetable;
 
 public interface TimetableService {
-	Iterable<ViewTimetable> viewTimetable(Integer classID);
+	Iterable<ViewTimetable> viewTimetable(Integer classID, Integer weekID);
 	
 	void saveTimetable(Timetable timetable);
 	
-	void addTimetable(int classID, int dayID, int periodID, int teacherID);
+	void addTimetable(int classID, int dayID, int periodID, int teacherID, int weekID);
 	
-	void deleteTimetable(int classID, int periodID, int dayID);
+	void deleteTimetable(int classID, int periodID, int dayID, int weekID);
 	
 	void newTable2();
 	
 	void newTable3();
 	
-	Iterable<ViewSchedule> viewSchedule(long teacherID);
+	Iterable<ViewSchedule> viewSchedule(long teacherID, long weekID);
 	
-	List<Integer> checkTimetable (int dayID, int periodID, int start_year, int teacherID);
+	List<Integer> checkTimetable (int dayID, int periodID, int start_year, int teacherID, int weekID);
 }

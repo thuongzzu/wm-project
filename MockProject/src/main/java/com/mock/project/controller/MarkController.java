@@ -171,7 +171,7 @@ public class MarkController {
 		
 		double avg = arr[0] / arr[1];
 		
-		markService.edit_mark(studentID, t.getSubjectID(), classID, hs1k1, hs2k1, hs3k1, hs1k2, hs2k2, hs3k2, avg);
+		markService.edit_mark(studentID, t.getSubjectID(), classID, hs1k1, hs2k1, hs3k1, hs1k2, hs2k2, hs3k2);
 		return "redirect:/findClassMarks?classID=" + classID;
 	}
 	/*

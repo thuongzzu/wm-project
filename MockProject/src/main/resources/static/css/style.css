@@ -408,7 +408,8 @@ a.navbar-brand {
 }
 
 a.navbar-brand img {
-  height: 55px;
+  height: 90px;
+  width: 200px
 }
 
 .top-header .navbar .navbar-collapse ul li a.active {
@@ -440,6 +441,7 @@ a.navbar-brand img {
   background: #fff;
   z-index: 20;
   margin: 0;
+  padding: 0 5%;
 }
 
 .navbar-toggler {
@@ -2300,4 +2302,3 @@ section.inner_banner h1 {
 .text-style {
  	text-align: center;
  }
- 
